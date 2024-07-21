@@ -4,7 +4,6 @@ const codeArea = document.getElementById('codeArea');
 const editButton = document.getElementById('editButton');
 
 // Set the textarea as editable by default
-//wfczt5ssem5ucseoljldi5te2d3irq7m4ghrobqwlxwqof5djs6q
 let isEditable = false;
 codeArea.readOnly = true;
 editButton.innerHTML = '<i class="codicon codicon-edit"></i>';
