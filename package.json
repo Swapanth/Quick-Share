@@ -1,0 +1,127 @@
+{
+  "name": "codeshare",
+  "displayName": "CodeShare",
+  "description": "CodeShare is a VS Code extension that empowers developers to effortlessly share code snippets directly from their editor. Whether you want to share a snippet via email, WhatsApp, or other platforms, CodeShare provides a seamless experience with just a few clicks.",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.91.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "code-share",
+          "title": "Code Share",
+          "icon": "assets/icon.svg"
+        }
+      ]
+    },
+    "views": {
+      "code-share": [
+        {
+          "type": "webview",
+          "id": "codeShareSidebar",
+          "name": "Code Share"
+        }
+      ]
+    },
+    "commands": [
+      {
+        "command": "extension.shareCodeWhatsApp",
+        "title": "WhatsApp",
+        "icon": "$(device-mobile)"
+      },
+      {
+        "command": "extension.shareCodeEmail",
+        "title": "Email",
+        "icon": "$(mail)"
+      },
+      {
+        "command": "extension.shareCodeDiscord",
+        "title": "Discord",
+        "icon": "$(comment-discussion)"
+      },
+      {
+        "command": "extension.shareCodeSlack",
+        "title": "Slack",
+        "icon": "$(comment)"
+      },
+      {
+        "command": "extension.shareCodeTeams",
+        "title": "Teams",
+        "icon": "$(comment)"
+      }
+    ],
+    "menus": {
+  "editor/context": [
+    {
+      "submenu": "extension.shareCodeSubmenu",
+      "when": "editorTextFocus",
+      "group": "navigation"
+    }
+  ],
+  "extension.shareCodeSubmenu": [
+    {
+      "command": "extension.shareCodeWhatsApp",
+      "group": "navigation"
+    },
+    {
+      "command": "extension.shareCodeEmail",
+      "group": "navigation"
+    },
+    {
+      "command": "extension.shareCodeDiscord",
+      "group": "navigation"
+    },
+    {
+      "command": "extension.shareCodeSlack",
+      "group": "navigation"
+    },
+    {
+      "command": "extension.shareCodeTeams",
+      "group": "navigation"
+    }
+  ]
+},
+    "submenus": [
+      {
+        "id": "extension.shareCodeSubmenu",
+        "label": "Share Code"
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run package",
+    "compile": "webpack",
+    "watch": "webpack --watch",
+    "package": "webpack --mode production --devtool hidden-source-map",
+    "compile-tests": "tsc -p . --outDir out",
+    "watch-tests": "tsc -p . -w --outDir out",
+    "pretest": "npm run compile-tests && npm run compile && npm run lint",
+    "lint": "eslint src --ext ts",
+    "test": "node ./out/test/runTest.js"
+  },
+  "dependencies": {
+    "@vscode/codicons": "^0.0.25"
+  },
+  "devDependencies": {
+    "@types/glob": "^8.1.0",
+    "@types/mocha": "^10.0.7",
+    "@types/node": "20.x",
+    "@types/vscode": "^1.91.0",
+    "@typescript-eslint/eslint-plugin": "^7.14.1",
+    "@typescript-eslint/parser": "^7.11.0",
+    "@vscode/test-electron": "^2.3.9",
+    "eslint": "^8.57.0",
+    "glob": "^8.1.0",
+    "mocha": "^10.3.0",
+    "ts-loader": "^9.5.1",
+    "typescript": "^5.5.3",
+    "webpack": "^5.93.0",
+    "webpack-cli": "^5.1.4"
+  }
+}
